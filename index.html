@@ -70,6 +70,20 @@ function displayMarker(locPosition, message) {
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);      
 }    
+     async function searchPlaces() {
+        console.log("searchPlaces 실행!!!");
+        var keyword = "역";
+        const currentCoordinate = await getCurrentCoordinate();
+        console.log(currentCoordinate);
+        var options = {
+          location: currentCoordinate,
+          radius: 10000,
+          sort: kakao.maps.services.SortBy.DISTANCE,
+        };
+
+        // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+        ps.keywordSearch(keyword, placesSearchCB, options);
+      }
 </script>
 </body>
 </html>
